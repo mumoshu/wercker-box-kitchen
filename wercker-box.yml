@@ -24,8 +24,6 @@ script: |
 
   sudo gem install test-kitchen ${GEM_OPTS}
 
-  sudo apt-get install zip -y -qq
-
   export VAGRANT_VERSION=1.6.3
   wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${VAGRANT_VERSION}_x86_64.deb
   sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
