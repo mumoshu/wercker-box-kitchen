@@ -26,7 +26,8 @@ script: |
   sudo gem install test-kitchen ${GEM_OPTS}
 
   # @see http://www.binarytides.com/install-virtualbox-4-3-ubuntu/
-  sudo apt-add-repository 'deb http://download.virtualbox.org/virtualbox/debian precise contrib' -y
+  # @see http://www.joeyconway.com/blog/2014/05/23/ubuntu-virtualbox-repository-configuration/
+  sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list"
   wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
   sudo apt-get update
   sudo apt-get install virtualbox-4.3
