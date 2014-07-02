@@ -11,13 +11,15 @@ keywords:
 script: |
   sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
 script: |
-  sudo gem install bundler --no-document
+  export GEM_OPTS='--no-ri --no-rdoc'
+
+  sudo gem install bundler ${GEM_OPTS}
   bundle version
 
-  sudo gem install berkshelf --no-document
+  sudo gem install berkshelf ${GEM_OPTS}
   berks version
 
-  sudo gem install test-kitchen --no-document
+  sudo gem install test-kitchen ${GEM_OPTS}
 
   sudo apt-get install unzip -y -qq
 
