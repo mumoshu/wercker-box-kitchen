@@ -1,5 +1,5 @@
 name: kitchen
-version: 0.0.2
+version: 0.0.3
 inherits: wercker/ubuntu12.04-webessentials@1.0.4
 type: main
 platform: ubuntu@12.04
@@ -8,6 +8,7 @@ keywords:
   - vagrant
   - berkshelf
   - test-kitchen
+  - virtualbox
 no-response-timeout: 10
 steps:
   - dannyrscott/slack-notify@1.1.2
@@ -23,6 +24,10 @@ script: |
   berks version
 
   sudo gem install test-kitchen ${GEM_OPTS}
+
+  wget http://download.virtualbox.org/virtualbox/4.3.12/virtualbox-4.3_4.3.12-93733~Ubuntu~precise_i386.deb
+  sudo dpkg -i virtualbox-4.3_4.3.12-93733~Ubuntu~precise_i386.deb
+  VBoxManage -v
 
   export VAGRANT_VERSION=1.6.3
   wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${VAGRANT_VERSION}_x86_64.deb
