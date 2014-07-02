@@ -1,0 +1,26 @@
+name: kitchen
+version: 0.0.1
+inherits: ubuntu12.04-webessentials@1.0.4
+type: service
+platform: ubuntu@12.04
+description: wercker box for running integration tests using Test Kitchen, Vagrant, Berkshelf
+keywords:
+  - vagrant
+  - berkshelf
+  - test-kitchen
+script: |
+  sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
+script: |
+  sudo gem install bundler --no-document
+  bundle version
+
+  sudo gem install berkshelf --no-document
+  berks version
+
+  sudo gem install test-kitchen --no-document
+
+  sudo apt-get install unzip -y -qq
+
+  export VAGRANT_VERSION=1.6.3
+  wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${VAGRANT_VERSION}_x86_64.deb
+  sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
