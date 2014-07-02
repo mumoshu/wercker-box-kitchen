@@ -8,6 +8,7 @@ keywords:
   - vagrant
   - berkshelf
   - test-kitchen
+no-response-timeout: 10
 script: |
   sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
 script: |
