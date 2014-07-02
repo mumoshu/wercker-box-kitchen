@@ -1,0 +1,7 @@
+box : wercker/ubuntu12.04-ruby1.9.3-berkshelf1
+build :
+  steps :
+    - script:
+        name : test
+        code : |
+          echo This should always pass
