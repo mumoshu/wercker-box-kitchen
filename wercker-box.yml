@@ -25,8 +25,11 @@ script: |
 
   sudo gem install test-kitchen ${GEM_OPTS}
 
-  wget http://download.virtualbox.org/virtualbox/4.3.12/virtualbox-4.3_4.3.12-93733~Ubuntu~precise_i386.deb
-  sudo dpkg -i virtualbox-4.3_4.3.12-93733~Ubuntu~precise_i386.deb
+  # @see http://www.binarytides.com/install-virtualbox-4-3-ubuntu/
+  sudo apt-add-repository 'deb http://download.virtualbox.org/virtualbox/debian precise contrib' -y
+  wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+  sudo apt-get update
+  sudo apt-get install virtualbox-4.3
   VBoxManage -v
 
   export VAGRANT_VERSION=1.6.3
