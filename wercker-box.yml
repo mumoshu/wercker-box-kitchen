@@ -30,7 +30,7 @@ script: |
   export VAGRANT_VERSION=1.6.3
   wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${VAGRANT_VERSION}_x86_64.deb
   sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
-  vagrant plugin install vagrant-aws
+  vagrant plugin install vagrant-aws vagrant-hostmanager vagrant-omnibus
 deploy:
   after-steps:
     slack-notify:
