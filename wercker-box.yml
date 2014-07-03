@@ -1,5 +1,5 @@
 name: kitchen
-version: 0.0.6
+version: 0.0.7
 inherits: wercker/ubuntu12.04-webessentials@1.0.4
 type: main
 platform: ubuntu@12.04
@@ -9,6 +9,7 @@ keywords:
   - berkshelf
   - test-kitchen
   - vagrant
+  - vagrant-aws
 no-response-timeout: 10
 steps:
   - dannyrscott/slack-notify@1.1.2
@@ -30,6 +31,7 @@ script: |
   wget https://dl.bintray.com/mitchellh/vagrant/vagrant_${VAGRANT_VERSION}_x86_64.deb
   sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
 deploy:
+  vagrant plugin install vagrant-aws
   after-steps:
     slack-notify:
       subdomain: $WERCKER_SLACK_NOTIFY_SUBDOMAIN
