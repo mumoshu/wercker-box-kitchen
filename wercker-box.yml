@@ -32,8 +32,8 @@ script: |
   sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
 deploy:
   vagrant plugin install vagrant-aws
-  after-steps:
-    slack-notify:
-      subdomain: $WERCKER_SLACK_NOTIFY_SUBDOMAIN
-      token: $WERCKER_SLACK_NOTIFY_TOKEN
-      channel: $WERCKER_SLACK_NOTIFY_CHANNEL
+after-steps:
+  slack-notify:
+    subdomain: $WERCKER_SLACK_NOTIFY_SUBDOMAIN
+    token: $WERCKER_SLACK_NOTIFY_TOKEN
+    channel: $WERCKER_SLACK_NOTIFY_CHANNEL
