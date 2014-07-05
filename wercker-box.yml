@@ -1,5 +1,5 @@
 name: kitchen
-version: 0.0.10
+version: 0.0.11
 inherits: wercker/ubuntu12.04-webessentials@1.0.4
 type: main
 platform: ubuntu@12.04
@@ -15,7 +15,7 @@ no-response-timeout: 10
 script: |
   sudo chef-solo -c $WERCKER_SOURCE_DIR/solo.rb -j $WERCKER_SOURCE_DIR/solo.json -l debug
 script: |
-  export GEM_OPTS='--no-ri --no-rdoc'
+  echo 'gem: --no-rdoc --no-ri' > ~/.gemrc 
 
   sudo gem install bundler ${GEM_OPTS}
   bundle version
